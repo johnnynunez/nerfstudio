@@ -1,7 +1,7 @@
 [project]
 name = "nerfstudio"
 description = "All-in-one repository for state-of-the-art NeRFs"
-channels = ["nvidia/label/cuda-11.8.0", "nvidia", "conda-forge", "pytorch"]
+channels = ["nvidia/label/cuda-12.4.0", "nvidia", "conda-forge", "pytorch"]
 platforms = ["linux-64"]
 
 [system-requirements]
