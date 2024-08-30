@@ -1,4 +1,4 @@
-ARG CUDA_VERSION=12.6.0
+ARG CUDA_VERSION=12.4.0
 ARG OS_VERSION=24.04
 # Define base image.
 FROM nvidia/cuda:${CUDA_VERSION}-devel-ubuntu${OS_VERSION}
