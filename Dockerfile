@@ -1,5 +1,5 @@
-ARG CUDA_VERSION=11.8.0
-ARG OS_VERSION=22.04
+ARG CUDA_VERSION=12.6.0
+ARG OS_VERSION=24.04
 # Define base image.
 FROM nvidia/cuda:${CUDA_VERSION}-devel-ubuntu${OS_VERSION}
 ARG CUDA_VERSION
@@ -146,12 +146,11 @@ RUN python3.10 -m pip install --no-cache-dir git+https://github.com/NVlabs/tiny-
 # Install hloc 1.4 as alternative feature detector and matcher option for nerfstudio.
 RUN git clone --branch master --recursive https://github.com/cvg/Hierarchical-Localization.git && \
     cd Hierarchical-Localization && \
-    git checkout v1.4 && \
-    python3.10 -m pip install --no-cache-dir -e . && \
+    pip3 wheel --no-deps --use-feature=fast-deps . -w dist/ && pip3 install dist/hloc-*.whl && \
     cd ..
 
 # Install pyceres from source
-RUN git clone --branch v1.0 --recursive https://github.com/cvg/pyceres.git && \
+RUN git clone --branch v2.3 --recursive https://github.com/cvg/pyceres.git && \
     cd pyceres && \
     python3.10 -m pip install --no-cache-dir -e . && \
     cd ..
